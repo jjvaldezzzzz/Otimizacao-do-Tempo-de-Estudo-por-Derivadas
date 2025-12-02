@@ -82,7 +82,7 @@ O sistema resolve:
 \[
 L'(h) = 0
 \]
-usando SymPy para encontrar \(h^*\).
+usando SymPy para encontrar \(h*\).
 
 Os parâmetros \(A\), \(k\) e \(c\) são estimados automaticamente com base nas respostas do usuário.
 
@@ -129,6 +129,7 @@ O resultado aparece em um cartão verde explicando:
 
 ## 👨‍💻 Autor
 Projeto desenvolvido para fins acadêmicos no CESUPA.
+Alunos: José Joaquim Valdez, Jorge Lobato e Lucas Mesquita
 
 ---
 
