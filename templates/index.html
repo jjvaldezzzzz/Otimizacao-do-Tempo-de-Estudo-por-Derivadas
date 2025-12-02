@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Otimização do Tempo de Estudo</title>
+    <style>
+        body {
+            background: #f4f4f8;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 40px 10px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 25px 25px 30px 25px;
+            border-radius: 12px;
+            width: 380px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        p.subtitulo {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            color: #444;
+            font-size: 0.9rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+            background: #fafafa;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 18px;
+            border-radius: 6px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #43a047;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #2e7d32;
+        }
+
+        .resultado strong {
+            font-size: 1.05rem;
+        }
+
+        .footer-text {
+            margin-top: 18px;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Tempo Ótimo de Estudo</h2>
+        <p class="subtitulo">
+            Responda rapidamente sobre o seu dia e veja quantas horas de estudo
+            tendem a render melhor para você hoje.
+        </p>
+
+        <form method="post">
+            <label>Qualidade do sono hoje</label>
+            <select name="sono" required>
+                <option value="5">Dormiu muito bem</option>
+                <option value="4">Dormiu bem</option>
+                <option value="3">Sono ok</option>
+                <option value="2">Dormiu mal</option>
+                <option value="1">Dormiu muito mal</option>
+            </select>
+
+            <label>Nível de energia agora</label>
+            <select name="energia" required>
+                <option value="5">Muito alta</option>
+                <option value="4">Alta</option>
+                <option value="3">Média</option>
+                <option value="2">Baixa</option>
+                <option value="1">Muito baixa</option>
+            </select>
+
+            <label>Nível de foco / concentração</label>
+            <select name="foco" required>
+                <option value="5">Muito focado</option>
+                <option value="4">Focado</option>
+                <option value="3">Ok</option>
+                <option value="2">Distraído</option>
+                <option value="1">Muito distraído</option>
+            </select>
+
+            <label>Familiaridade com o conteúdo</label>
+            <select name="familiaridade" required>
+                <option value="5">Já estudei bastante</option>
+                <option value="4">Conheço bem</option>
+                <option value="3">Conheço mais ou menos</option>
+                <option value="2">Quase não conheço</option>
+                <option value="1">Primeira vez vendo</option>
+            </select>
+
+            <label>Dificuldade da matéria</label>
+            <select name="dificuldade" required>
+                <option value="1">Muito fácil</option>
+                <option value="2">Fácil</option>
+                <option value="3">Média</option>
+                <option value="4">Difícil</option>
+                <option value="5">Muito difícil</option>
+            </select>
+
+            <label>Nível de estresse hoje</label>
+            <select name="stress" required>
+                <option value="1">Quase nada</option>
+                <option value="2">Pouco</option>
+                <option value="3">Médio</option>
+                <option value="4">Alto</option>
+                <option value="5">Muito alto</option>
+            </select>
+
+            <label>Ambiente com distrações?</label>
+            <select name="distracoes" required>
+                <option value="1">Quase nenhuma distração</option>
+                <option value="2">Poucas</option>
+                <option value="3">Algumas</option>
+                <option value="4">Muitas</option>
+                <option value="5">Caótico</option>
+            </select>
+
+            <label>Nível de motivação para estudar</label>
+            <select name="motivacao" required>
+                <option value="5">Muito motivado</option>
+                <option value="4">Motivado</option>
+                <option value="3">Neutro</option>
+                <option value="2">Pouco motivado</option>
+                <option value="1">Sem motivação</option>
+            </select>
+
+            <button type="submit">Calcular tempo ideal</button>
+        </form>
+        {% if result %}
+            {% if result is string %}
+                <div class="resultado">{{ result }}</div>
+            {% else %}
+                <div class="resultado">
+                    <strong>Tempo ótimo estimado: {{ result }} horas por dia.</strong>
+                    <br><br>
+                    {% if explicacao %}
+                        {{ explicacao }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+
+
+        <p class="footer-text">
+            Este resultado é uma estimativa baseada em um modelo matemático simples de
+            aprendizado x fadiga. Use como referência, não como regra rígida. 😉
+        </p>
+    </div>
+</body>
+</html>
